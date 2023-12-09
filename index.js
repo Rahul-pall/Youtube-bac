@@ -10,6 +10,7 @@ import cookieParser from "cookie-parser";
 import cors from 'cors'
 const app=Express();
 
+app.use(cors());
 dotenv.config();
 
 const URI=process.env.MONGO_URI;
@@ -24,7 +25,6 @@ app.use("/api/users",userRouter)
 app.use("/api/comment",commentRouter)
 app.use("/api/video",videoRouter)
 app.use("/api/auth",authRouter)
-app.use(cors())
 
 app.use((err,req,res,next)=>{
   const status=err.status || 500;
